@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TodoInput.css";
 import { TextField, Button } from "@mui/material";
+import TaskIcon from "@mui/icons-material/Task";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -21,7 +22,14 @@ const TodoInput = (props) => {
   };
 
   return (
+    
     <div className="containerInput">
+    <h1>
+      My Todo List{" "}
+      <span className="icon">
+        <TaskIcon />
+      </span>
+    </h1>
       <div className="textInputTodo">
         <TextField
           id="filled-error-helper-text"
@@ -29,6 +37,7 @@ const TodoInput = (props) => {
           variant="outlined"
           onChange={(event) => setTitle(event.target.value)}
           value={title}
+          fullWidth
         />
       </div>
       <div className="btnClick">

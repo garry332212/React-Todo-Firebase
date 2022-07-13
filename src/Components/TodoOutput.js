@@ -1,5 +1,6 @@
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import React from "react";
+import "../App.css"
 
 const TodoOutput = ({ todo, deleteHandler }) => {
   

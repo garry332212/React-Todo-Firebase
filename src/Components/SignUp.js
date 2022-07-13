@@ -1,11 +1,44 @@
-import React from 'react'
+import React from "react";
+import { Button, TextField } from "@mui/material";
 
-const SignUp = () => {
+import SensorOccupiedIcon from '@mui/icons-material/SensorOccupied';
+import "./Login.css";
+
+const SignUo = () => {
   return (
-    <div>
+    <div className="login">
+      <div className="loginTitle">
+        Sign Up To My Todos{" "}
+        <span className="iconTodo">
+          <SensorOccupiedIcon fontSize="large" />
+        </span>{" "}
         
-    </div>
-  )
-}
+      </div>
+        <div className="inputEmail">
 
-export default SignUp
+
+      <TextField 
+      required id="outlined-required" 
+      label="Email" 
+      fullWidth/>
+      </div>
+
+      <div className="inputPass">
+      <TextField
+        id="outlined-password-input"
+        label="Password"
+        type="password"
+        autoComplete="current-password"
+        fullWidth
+      />
+      </div>
+      <div className="buttonLogin">
+        <Button variant="contained" size="large" color="error">
+          Sign Up
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default SignUo;

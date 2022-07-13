@@ -17,10 +17,19 @@
   margin-bottom: 20px;
 }
 
+.inputEmail{
+margin-bottom: 15px;
+
+}
+.inputPass{
+margin-bottom: 10px;
+
+}
+
 .iconTodo {
   color: red !important;
   position: relative;
-  top: 10px;
+
 }
 .buttonLogin {
   margin-top: 20px;
