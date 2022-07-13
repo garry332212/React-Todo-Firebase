@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.login {
+  margin: auto;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  width: 50%;
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginTitle {
+  font-size: x-large;
+  font-family: "Bebas Neue", cursive;
+  margin-bottom: 20px;
+}
+
+.iconTodo {
+  color: red !important;
+  position: relative;
+  top: 10px;
+}
+.buttonLogin {
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .login {
+    width: 90%;
+    margin-top: 10px;
+  }
+}
