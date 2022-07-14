@@ -1,50 +1,17 @@
-import React from 'react'
-import TodoOutput from './TodoOutput';
+import React from "react";
 
-import {
-    collection,
-    query,
-    onSnapshot,
-    doc,
-    deleteDoc,
-  } from "firebase/firestore";
-  import { db } from "./firebase";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-const Output = () => {
-
-    const [todos, setTodos] = React.useState([]);
-
-    //fetching the data using useEffect
-  
-    React.useEffect(() => {
-      const myQuery = query(collection(db, "Today'sTasks"));
-      const querySnap = onSnapshot(myQuery, (querySnapshot) => {
-        let myTodoArray = [];
-        querySnapshot.forEach((data) => {
-          myTodoArray.push({ ...data.data(), id: data.id });
-        });
-        setTodos(myTodoArray);
-      });
-      return () => querySnap();
-    }, []);
-  
-    const deleteHandler = async (id) => {
-      await deleteDoc(doc(db, "Today'sTasks", id));
-    };
+const Output = ({ todo, handleDelete }) => {
   return (
-    <div>
- <div className="todoContainer">
-          {todos.map((todo) => (
-            <TodoOutput
-              key={todo.id}
-              todo={todo}
-              deleteHandler={deleteHandler}
-            />
-          ))}
-        </div> 
+    <div className="todo">
+      <div className="list">{todo.title}</div>
 
+      <button className="deleteButton" onClick={() => handleDelete(todo.id)}>
+        <DeleteIcon id="i" />
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Output
+export default Output;

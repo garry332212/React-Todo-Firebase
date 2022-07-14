@@ -1,43 +1,64 @@
-import React from "react";
-import { Button, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
-import SensorOccupiedIcon from '@mui/icons-material/SensorOccupied';
+import SensorOccupiedIcon from "@mui/icons-material/SensorOccupied";
 import "./Login.css";
 
 const SignUo = () => {
+  const [signUpEmail, setSignUpEmail] = useState("");
+  const [signUpPassword, setsignUpPassword] = useState("");
+  let navigate = useNavigate();
+
+  const submitSignUpHandler = async (e) => {
+    e.preventDefault();
+
+    await auth.createUserWithEmailAndPassword(
+      signUpEmail,
+      signUpPassword
+    );
+    console.log("New Account Created");
+    navigate("/todoinput", { replace: true });
+  };
   return (
-    <div className="login">
-      <div className="loginTitle">
-        Sign Up To My Todos{" "}
-        <span className="iconTodo">
-          <SensorOccupiedIcon fontSize="large" />
-        </span>{" "}
-        
-      </div>
-        <div className="inputEmail">
+    <>
+      <div className="login">
+        <div className="loginTitle">
+          Sign Up To My Todos{" "}
+          <span className="iconTodo">
+            <SensorOccupiedIcon fontSize="large" />
+          </span>{" "}
+        </div>
 
+        <form onSubmit={submitSignUpHandler}>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter your email"
+              autoComplete="current-email"
+              onChange={(e) => setSignUpEmail(e.target.value)}
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="Create a password"
+              autoComplete="current-password"
+              onChange={(e) => setsignUpPassword(e.target.value)}
+            />
+          </div>
 
-      <TextField 
-      required id="outlined-required" 
-      label="Email" 
-      fullWidth/>
+          <button type="submit" class="btn btn-primary ">
+            Submit
+          </button>
+        </form>
       </div>
-
-      <div className="inputPass">
-      <TextField
-        id="outlined-password-input"
-        label="Password"
-        type="password"
-        autoComplete="current-password"
-        fullWidth
-      />
-      </div>
-      <div className="buttonLogin">
-        <Button variant="contained" size="large" color="error">
-          Sign Up
-        </Button>
-      </div>
-    </div>
+    </>
   );
 };
 

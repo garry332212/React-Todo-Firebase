@@ -1,35 +1,35 @@
 import React, { useState } from "react";
+import { db } from "../firebase";
 import "./TodoInput.css";
 import { TextField, Button } from "@mui/material";
 import TaskIcon from "@mui/icons-material/Task";
 import AddTaskIcon from "@mui/icons-material/AddTask";
-import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
-const TodoInput = (props) => {
+// import { useNavigate } from "react-router-dom";
+
+const Todos = ({ deleteTodoHandler, todo }) => {
   const [title, setTitle] = useState("");
 
-  const submitTodoHandler = async () => {
-    if (title) {
-    await addDoc(collection(db, "Today'sTasks"), {
+  //adding new Todo To th firestore
+  const addTodoHandler = async (e) => {
+    e.preventDefault();
+    if (title !== "") {
+      await addDoc(collection(db, "todos"), {
         title,
-        complete: false
-    });
+        completed: false,
+      });
       setTitle("");
-    } else {
-      console.log("Invalid");
     }
   };
-
   return (
-    
     <div className="containerInput">
-    <h1>
-      My Todo List{" "}
-      <span className="icon">
-        <TaskIcon />
-      </span>
-    </h1>
+      <h1>
+        My Todo List{" "}
+        <span className="icon">
+          <TaskIcon />
+        </span>
+      </h1>
       <div className="textInputTodo">
         <TextField
           id="filled-error-helper-text"
@@ -45,14 +45,13 @@ const TodoInput = (props) => {
           variant="contained"
           size="large"
           startIcon={<AddTaskIcon />}
-          onClick={submitTodoHandler}
+          onClick={addTodoHandler}
         >
           Add
         </Button>
       </div>
-    
     </div>
   );
 };
 
-export default TodoInput;
+export default Todos;

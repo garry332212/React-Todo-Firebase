@@ -1,19 +1,14 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import configFirestore from "./configFirestore"
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDG60PFGUNL8QEcrGNitZscGwmyAoyoZRA",
-  authDomain: "todo-app-12829.firebaseapp.com",
-  projectId: "todo-app-12829",
-  storageBucket: "todo-app-12829.appspot.com",
-  messagingSenderId: "389766124401",
-  appId: "1:389766124401:web:bc73e33fb14f5278f51cd0",
-  measurementId: "G-SB998YT8Z0"
-};
 
-  const app = initializeApp(firebaseConfig);
+  firebase.initializeApp(configFirestore);
 
-  const db = getFirestore(app);
+  const auth = firebase.auth()
+  const db = firebase.firestore();
+ 
 
-  export {db};
+  export {db, auth};
