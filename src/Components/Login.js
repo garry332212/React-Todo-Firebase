@@ -10,14 +10,12 @@ const Login = () => {
   const [loginPassword, setLoginPassword] = useState("");
   let navigate = useNavigate();
 
+  //Logging Users Into their Accounts
   const submitLoginHandler = async (e) => {
     e.preventDefault();
 
-    await auth.signInWithEmailAndPassword(
-      loginEmail,
-      loginPassword
-    );
-    console.log( "Logged In To ");
+    await auth.signInWithEmailAndPassword(loginEmail, loginPassword);
+    console.log("Logged In To ");
     navigate("/todoinput", { replace: true });
 
     setLoginEmail("");

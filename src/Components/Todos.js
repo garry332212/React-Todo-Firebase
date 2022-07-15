@@ -1,27 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import "./TodoInput.css";
 import { TextField, Button } from "@mui/material";
 import TaskIcon from "@mui/icons-material/Task";
 import AddTaskIcon from "@mui/icons-material/AddTask";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc, } from "firebase/firestore";
+import OutputRoute from "./OutputRoute";
+
 
 // import { useNavigate } from "react-router-dom";
 
-const Todos = ({ deleteTodoHandler, todo }) => {
+const Todos = ({ user }) => {
   const [title, setTitle] = useState("");
+  const [myTodos, setMyTodos] = useState([]);
 
-  //adding new Todo To th firestore
+
+  useEffect(() =>{
+
+    if(user){
+      const docRef = db.collection('todos').doc(user.uid)
+    docRef.onSnapshot(docSnap =>{
+      if(docSnap.exist){
+        console.log(docSnap.data().todos);
+        setMyTodos(docSnap.data().todos)
+      }else{
+        console.log("no docs");
+      }
+    })
+  }else{
+    console.log("Piush");
+  }
+  }, [])
+
+  //adding new Todo To  firestore
   const addTodoHandler = async (e) => {
     e.preventDefault();
-    if (title !== "") {
-      await addDoc(collection(db, "todos"), {
-        title,
-        completed: false,
-      });
-      setTitle("");
+    // if (title !== "") {
+    //   await addDoc(collection(db, "todos"), {
+    //     title,
+    //   });
+  db.collection('todos').doc(user.uid).set({
+    todos:[...myTodos, title]
+  })
     }
-  };
+  
   return (
     <div className="containerInput">
       <h1>
@@ -50,6 +72,8 @@ const Todos = ({ deleteTodoHandler, todo }) => {
           Add
         </Button>
       </div>
+
+      <OutputRoute />
     </div>
   );
 };

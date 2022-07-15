@@ -10,16 +10,15 @@ const SignUo = () => {
   const [signUpPassword, setsignUpPassword] = useState("");
   let navigate = useNavigate();
 
+  //Creating User Account
   const submitSignUpHandler = async (e) => {
     e.preventDefault();
 
-    await auth.createUserWithEmailAndPassword(
-      signUpEmail,
-      signUpPassword
-    );
+    await auth.createUserWithEmailAndPassword(signUpEmail, signUpPassword);
     console.log("New Account Created");
     navigate("/todoinput", { replace: true });
   };
+
   return (
     <>
       <div className="login">

@@ -52,7 +52,12 @@
   background-color: transparent;
   color: rgb(236, 10, 10);
 }
-#i{
+
+#s {
+  font-size: 2rem;
+  margin-top: 5px;
+}
+#i {
   font-size: 3rem;
   margin-top: 5px;
 }
