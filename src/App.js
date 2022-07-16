@@ -4,8 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./Components/SignUp";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
-
-// import { auth } from "./firebase";
 import Todos from "./Components/Todos";
 import { auth } from "./firebase";
 
@@ -18,12 +16,15 @@ function App() {
       if (user) setUser(user);
       else setUser(null);
     });
+
+    // return () => {
+    //   unsub();
+    // };
   });
 
   return (
     <BrowserRouter>
       <Navbar user={user} />
-
       <div className="App">
         <Routes>
           <Route path="todoinput" element={<Todos user={user} />} />

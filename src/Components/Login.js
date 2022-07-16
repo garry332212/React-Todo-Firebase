@@ -34,11 +34,10 @@ const Login = () => {
         </div>
 
         <form onSubmit={submitLoginHandler}>
-          <div class="form-group">
+          <div className="form-group">
             <input
-              type="text"
-              class="form-control"
-              id="exampleInputEmail1"
+              type="email"
+              className="form-control"
               aria-describedby="emailHelp"
               placeholder="Enter email"
               autoComplete="current-email"
@@ -46,11 +45,10 @@ const Login = () => {
               onChange={(e) => setLoginEmail(e.target.value)}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="password"
-              class="form-control"
-              id="exampleInputPassword1"
+              className="form-control"
               placeholder="Password"
               autoComplete="current-password"
               value={loginPassword}
@@ -58,8 +56,8 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" class="btn btn-primary">
-            Submit
+          <button type="submit" className="btn btn-primary">
+            Login
           </button>
         </form>
       </div>

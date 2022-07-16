@@ -30,29 +30,27 @@ const SignUo = () => {
         </div>
 
         <form onSubmit={submitSignUpHandler}>
-          <div class="form-group">
+          <div className="form-group">
             <input
-              type="text"
-              class="form-control"
-              id="exampleInputEmail1"
+              type="email"
+              className="form-control"
               aria-describedby="emailHelp"
               placeholder="Enter your email"
               autoComplete="current-email"
               onChange={(e) => setSignUpEmail(e.target.value)}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="password"
-              class="form-control"
-              id="exampleInputPassword1"
+              className="form-control"
               placeholder="Create a password"
               autoComplete="current-password"
               onChange={(e) => setsignUpPassword(e.target.value)}
             />
           </div>
 
-          <button type="submit" class="btn btn-primary ">
+          <button type="submit" className="btn btn-primary ">
             Submit
           </button>
         </form>

@@ -30,7 +30,7 @@
     rgb(239, 241, 245) 100%
   );
   width: 100%;
-  padding: 0;
+  padding-left: 10px;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
@@ -39,39 +39,23 @@
   font-size: 25px;
   color: black;
   font-family: "Arima", cursive !important;
+  text-align: left;
 }
 
-.list {
-  padding-left: 10px;
-}
-
-.deleteButton {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
-  color: rgb(236, 10, 10);
-}
-
-#s {
-  font-size: 2rem;
-  margin-top: 5px;
-}
 #i {
   font-size: 3rem;
-  margin-top: 5px;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
   .App {
     width: 98%;
-    margin-top: 8rem;
+    margin-top: 5rem;
   }
 
   .todo {
     margin-top: 20px;
     font-size: 20px;
-    padding: 2px 0 0px 10px;
   }
 
   #i {

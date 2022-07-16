@@ -2,13 +2,12 @@ import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
-
 export default function Navbar(props) {
   let navigate = useNavigate();
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <h1 className="navbar-brand">Navbar</h1>
+        <h1 className="navbar-brand">What To-Do</h1>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,10 +21,8 @@ export default function Navbar(props) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
-            <Link className="nav-link" to="/todoinput">
-              Home <span className="sr-only">(current)</span>
-            </Link>
-            
+           
+
             {/* Log Out User */}
             {props.user ? (
               <li className="nav-item ">
@@ -53,7 +50,6 @@ export default function Navbar(props) {
                     Sign Up
                   </Link>
                 </li>
-             
               </>
             )}
           </ul>
