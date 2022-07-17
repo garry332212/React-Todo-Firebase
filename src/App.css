@@ -1,25 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Arima:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 .App {
   margin: auto;
   text-align: center;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
   width: 50%;
   margin-top: 5rem;
-  background: linear-gradient(
-    90deg,
-    rgb(168, 208, 226) 66%,
-    rgb(245, 122, 163) 100%
-  );
+  
 }
 
-.icon {
-  color: rgb(41, 224, 4);
+span {
   position: relative;
-  top: 2px;
+  top: 5px;
+  color: rgb(40, 153, 153);
 }
+
+.navbar {
+  border-radius: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(227, 236, 246, 1) 6%,
+    rgba(241, 238, 235, 1) 50%,
+    rgba(215, 230, 252, 1) 100%
+  );
+  width: 70%;
+  margin: auto;
+}
+
+.loginNav,
+.signUpNav {
+  font-family: "Varela Round", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
 
 .todo {
   margin: auto;
@@ -37,7 +54,6 @@
   align-items: center;
   box-shadow: 1px 2px 10px rgb(8, 0, 0);
   font-size: 25px;
-  color: black;
   font-family: "Arima", cursive !important;
   text-align: left;
 }
@@ -45,6 +61,7 @@
 #i {
   font-size: 3rem;
   cursor: pointer;
+  color: rgb(240, 52, 52);
 }
 
 @media (max-width: 900px) {
@@ -56,9 +73,21 @@
   .todo {
     margin-top: 20px;
     font-size: 20px;
+    padding: 5px;
   }
 
   #i {
     font-size: 2rem;
+  }
+  .navbar {
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .loginNav,
+  .signUpNav {
+    font-size: 14px;
+    position: relative;
+    left: 15px;
   }
 }

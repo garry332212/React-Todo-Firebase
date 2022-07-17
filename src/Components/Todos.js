@@ -2,45 +2,52 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import "./TodoInput.css";
 import { TextField, Button } from "@mui/material";
-import TaskIcon from "@mui/icons-material/Task";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import { useNavigate } from "react-router-dom";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-// let unsub =()=>{};
 
 const Todos = ({ user }) => {
   const [title, setTitle] = useState("");
   const [myTodos, setMyTodos] = useState([]);
+  const [validated, setValidated] = useState(true); //validating the TODO INPUT
   let navigate = useNavigate();
+
+  const inputHandler = (event) => {
+    setTitle(event.target.value);
+    if (event.target.value.trim().length > 0) {
+      setValidated(true);
+    }
+  };
 
   useEffect(() => {
     if (user) {
       const docRef = db.collection("todos").doc(user.uid);
       docRef.onSnapshot((docSnap) => {
         if (docSnap.exists) {
-          console.log(docSnap.data().todos);
           setMyTodos(docSnap.data().todos);
         } else {
-          console.log("Welcome", docRef);
+          // setCurrentUser(auth.currentUser)
         }
       });
     } else {
       navigate("/login", { replace: true });
     }
-
-    // return () =>{
-    //   unsub()
-    // }
   }, []);
 
   //adding new Todo To  firestore as an array so they dont overwrite
   const addTodoHandler = (e) => {
-    db.collection("todos")
-      .doc(user.uid)
-      .set({
-        todos: [...myTodos, title],
-      });
-    setTitle("");
+    if (!title) {
+      setValidated(false);
+      return;
+    } else {
+      db.collection("todos")
+        .doc(user.uid)
+        .set({
+          todos: [...myTodos, title],
+        });
+
+      setTitle("");
+    }
   };
 
   //Deleting Todo Form List
@@ -61,30 +68,38 @@ const Todos = ({ user }) => {
       <h1>
         My Todo List{" "}
         <span className="icon">
-          <TaskIcon />
+          <AddTaskIcon fontSize="large" />
         </span>
       </h1>
+
       <div className="textInputTodo">
         <TextField
           id="filled-error-helper-text"
           label="Today's Tasks"
           variant="outlined"
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={inputHandler}
           value={title}
           fullWidth
+          style={{
+            backgroundColor: !validated ? "#FF7396" : "white",
+            borderColor: !validated ? "blue" : "black",
+          }}
         />
       </div>
-      <div className="btnClick">
-        <Button
-          variant="contained"
-          size="large"
-          startIcon={<AddTaskIcon />}
-          onClick={addTodoHandler}
-        >
-          Add
-        </Button>
+      <div className="inputEmpty">
+        {!validated && <h4> Please Enter Your TODO!</h4>}
       </div>
+      <Button
+        variant="contained"
+        size="large"
+        style={{ fontSize: "20px", margin: "10px" }}
+        onClick={addTodoHandler}
+      >
+        Add
+      </Button>
+
       <hr />
+
       {myTodos.map((todo, index) => {
         return (
           <li key={index} className="todo">

@@ -16,16 +16,13 @@ function App() {
       if (user) setUser(user);
       else setUser(null);
     });
-
-    // return () => {
-    //   unsub();
-    // };
   });
 
   return (
     <BrowserRouter>
-      <Navbar user={user} />
+      
       <div className="App">
+        <Navbar user={user} />
         <Routes>
           <Route path="todoinput" element={<Todos user={user} />} />
         </Routes>

@@ -1,33 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
+
 .containerInput {
- 
   margin: auto;
   text-align: center;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 15px 12px 28px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
-  width:90%;
-  margin-top: 0.1rem;
-  background: whitesmoke
+  width: 70%;
+  margin-top: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(227, 236, 246, 1) 6%,
+    rgba(255, 255, 255, 0.7651435574229692) 30%,
+    rgba(215, 230, 252, 1) 100%
+  );
+  
+}
+
+.containerInput > h1 {
+  font-family: "Oswald", sans-serif;
 }
 
 .textInputTodo {
   margin-top: 20px;
 }
 
-hr{
-  border-top: 2px solid bisque;
-}
-.btnClick {
-  margin: 25px 0 0 20px;
+.inputEmpty {
+  margin-top: 20px;
+  font-family: "Koulen", cursive;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  font-size: 25px;
+  background: linear-gradient(
+    90deg,
+    rgba(135, 24, 238, 1) 6%,
+    rgba(28, 28, 93, 1) 62%,
+    rgba(172, 34, 80, 1) 100%
+  );
+  position: relative;
+  color: whitesmoke;
+  height: 10;
 }
 
-@media(max-width: 700px){
-  .containerInput{
+.icon {
+  color: rgb(2, 2, 2);
+  position: relative;
+  top: 2px;
+}
+
+hr {
+  border-top: 2px solid rgb(3, 3, 3);
+}
+
+@media (max-width: 700px) {
+  .containerInput {
     width: 100%;
   }
 }
-
-
-
-
-
