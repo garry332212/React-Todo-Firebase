@@ -2,8 +2,8 @@ import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import Logo from "./assets/logo.png";
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 export default function Navbar(props) {
   let navigate = useNavigate();
@@ -36,13 +36,19 @@ export default function Navbar(props) {
           ) : (
             <>
               <li className="nav-item loginNav">
-                <Link className="nav-link" to="/login"><span><AccountBoxIcon /></span>
+                <Link className="nav-link" to="/login">
+                  <span>
+                    <AccountBoxIcon />
+                  </span>
                   Login
                 </Link>
               </li>
 
               <li className="nav-item signUpNav">
-                <Link className="nav-link" to="/signup"><span><PersonAddIcon /></span>
+                <Link className="nav-link" to="/signup">
+                  <span>
+                    <PersonAddIcon />
+                  </span>
                   Sign Up
                 </Link>
               </li>
